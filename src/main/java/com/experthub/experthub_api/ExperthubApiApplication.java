@@ -1,13 +1,13 @@
-package com.exporthub.exporthub_api;
+package com.experthub.experthub_api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ExporthubApiApplication {
+public class ExperthubApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ExporthubApiApplication.class, args);
+		SpringApplication.run(ExperthubApiApplication.class, args);
 	}
 
 }
