@@ -1,9 +1,9 @@
 package com.experthub.experthub_api.response;
 import lombok.Data;
-
+import lombok.Builder;
 
 @Data
-@builder
+@Builder
 public class Response<T>  {
     private int statusCode;
 

@@ -1,14 +1,36 @@
+package com.experthub.experthub_api.expert.service;
+
+import com.experthub.experthub_api.response.Response;
+import com.experthub.experthub_api.expert.dto.ExpertDTO;
+import com.experthub.experthub_api.expert.entity.ExpertEntity;
+import com.experthub.experthub_api.expert.repository.ExpertRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import lombok.Data;
+import lombok.Builder;
+import org.modelmapper.ModelMapper;
 
 
+
+@Builder
+@Service
+@RequiredArgsConstructor
+@Slf4j
 public class ExpertService {
 
     private final ExpertRepository expertRepository;
+    private final ModelMapper modelMapper;
 
     public Response<ExpertDTO> getExpertById(Long id) {
-        Optional<Expert> expertOpt = expertRepository.findById(id);
+        Optional<ExpertEntity> expertOpt = expertRepository.findById(id);
         if (expertOpt.isPresent()) {
-            Expert expert = expertOpt.get();
-            ExpertDTO expertDTO = mapToDTO(expert);
+            ExpertEntity expertEntity = expertOpt.get();
+            ExpertDTO expertDTO = modelMapper.map(expertEntity, ExpertDTO.class);
             return Response.<ExpertDTO>builder()
                     .data(expertDTO)
                     .message("Expert found")
@@ -24,9 +46,9 @@ public class ExpertService {
     }
 
     public Response<List<ExpertDTO>> getAllExperts() {
-        List<Expert> experts = expertRepository.findAll();
+        List<ExpertEntity> experts = expertRepository.findAll();
         List<ExpertDTO> expertDTOs = experts.stream()
-                .map(this::mapToDTO)
+                .map(expert -> modelMapper.map(expert, ExpertDTO.class))
                 .collect(Collectors.toList());
         return Response.<List<ExpertDTO>>builder()
                 .data(expertDTOs)
