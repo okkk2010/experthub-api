@@ -9,9 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ExpertRepository extends JpaRepository<ExpertEntity, Long> {
-
-    
     Optional<ExpertEntity> findById(Long id);
-
     List<ExpertEntity> findAll();
 }

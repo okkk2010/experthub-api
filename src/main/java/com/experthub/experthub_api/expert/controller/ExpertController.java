@@ -2,6 +2,8 @@ package com.experthub.experthub_api.expert.controller;
 
 import com.experthub.experthub_api.expert.dto.ExpertDTO;
 import com.experthub.experthub_api.expert.service.ExpertService;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
+@CrossOrigin(origins = "http://localhost:5173")
 @RequestMapping("/api/experts")
 @RequiredArgsConstructor
 public class ExpertController {
@@ -28,4 +31,6 @@ public class ExpertController {
     public ResponseEntity<Response<List<ExpertDTO>>> getAllExperts() {
         return ResponseEntity.ok(expertService.getAllExperts());
     }
+
+
 }

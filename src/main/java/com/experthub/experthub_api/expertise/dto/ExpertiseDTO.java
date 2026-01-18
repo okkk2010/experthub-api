@@ -1,4 +1,4 @@
-package com.experthub.experthub_api.expert.dto;
+package com.experthub.experthub_api.expertise.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,12 +9,8 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpertDTO {
+public class ExpertiseDTO {
     private Long id;
-    private String name;
-    private String password;
+    private Integer code;
     private String expertise;
-    private String email;
-    private String phoneNumber;
-
 }

@@ -1,4 +1,4 @@
-package com.experthub.experthub_api.expert.entity;
+package com.experthub.experthub_api.user.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -11,20 +11,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "experts")
+@Table(name = "Users")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ExpertEntity {
-
+public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private String password;
-    private String expertise;
     private String email;
     private String phoneNumber;
 }
